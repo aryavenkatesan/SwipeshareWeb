@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import logo from '../public/assets/logo.png';
 
 function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,9 +17,9 @@ function Header() {
     return (
         <>
             <header className="fixed top-0 left-0 right-0 z-50 bg-white/30 backdrop-blur-md shadow-sm border-b border-white/20">
-                <div className="flex items-center justify-between px-4 lg:px-16 py-4">
+                <div className="flex items-center justify-between px-4 lg:px-12 py-4">
                     <div className='flex flex-row items-center'>
-                        <img src={logo} alt="Swipeshare logo" className="h-6 lg:h-8 w-auto pr-2 lg:pr-4" />
+                        <img src="/assets/logo.png" alt="Swipeshare logo" className="h-6 lg:h-8 w-auto pr-2 lg:pr-4" />
                         <h1 className="text-xl lg:text-2xl" style={{
                             fontFamily: 'Montserrat', fontWeight: 300
                         }}>Swipeshare</h1>

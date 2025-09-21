@@ -1,11 +1,9 @@
-import handMockup from '../public/assets/handMockup.png';
-
 function Hero() {
     return (
         <>
             {/* Make the hero container relative so its children can be absolutely positioned */}
             <div
-                className="relative flex flex-col lg:flex-row place-content-between px-8 lg:pl-16 pt-48 lg:pt-32 lg:pr-0 "
+                className="relative flex flex-col lg:flex-row place-content-between px-8 lg:pl-16 pt-32 lg:pt-32 lg:pr-0 "
                 style={{
                     background: 'radial-gradient(ellipse 120% 250% at top right, rgba(183,129,225,0.8) 0%, white 60%)'
                 }}
@@ -29,14 +27,15 @@ function Hero() {
                 </div>
 
                 {/* image */}
-                <img
-                    className="lg:max-w-[50vw] lg:max-h-lvh h-fit w-full max-w-md mx-auto"
-                    src={handMockup}
-                    alt="hand mockup"
-                />
-
-                {/* ✅ gradient pinned to bottom of Hero section */}
-                <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
+                <div>
+                    <img
+                        className="lg:max-w-[50vw] lg:max-h-lvh h-fit w-full max-w-md mx-auto"
+                        src="/assets/handMockup.png"
+                        alt="hand mockup"
+                    />
+                    {/* ✅ gradient pinned to bottom of Hero section */}
+                    <div className="absolute bottom-10 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
+                </div>
             </div>
         </>
     )
