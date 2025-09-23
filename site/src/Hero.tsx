@@ -1,3 +1,5 @@
+import handMockup from '/assets/handMockup.png'
+
 function Hero() {
     return (
         <>
@@ -30,7 +32,7 @@ function Hero() {
                 <div>
                     <img
                         className="lg:max-w-[50vw] lg:max-h-lvh h-fit w-full max-w-md mx-auto"
-                        src="/assets/handMockup.png"
+                        src={handMockup}
                         alt="hand mockup"
                     />
                     {/* ✅ gradient pinned to bottom of Hero section */}

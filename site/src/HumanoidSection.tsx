@@ -1,4 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import bg1 from '/assets/bg1.jpg'
+import bg2 from '/assets/bg2.png'
+import bg3 from '/assets/bg3.png'
+
 
 const HumanoidSection = () => {
     const sectionRef = useRef<HTMLDivElement>(null);
@@ -110,7 +114,7 @@ const HumanoidSection = () => {
                             <div
                                 className="absolute inset-0 z-0 bg-gradient-to-b from-violet-900/40 to-slate-900/80"
                                 style={{
-                                    backgroundImage: `url('/assets/bg1.jpg')`,
+                                    backgroundImage: `url(${bg1})`,
                                     backgroundSize: "cover",
                                     backgroundPosition: "top center",
                                     backgroundBlendMode: "overlay"
@@ -146,7 +150,7 @@ const HumanoidSection = () => {
                             <div
                                 className="absolute inset-0 z-0 bg-gradient-to-b from-pulse-900/40 to-dark-900/80"
                                 style={{
-                                    backgroundImage: `url('/assets/bg2.png')`,
+                                    backgroundImage: `url(${bg2})`,
                                     backgroundSize: "cover",
                                     backgroundPosition: "center",
                                     backgroundBlendMode: "overlay"
@@ -182,7 +186,7 @@ const HumanoidSection = () => {
                             <div
                                 className="absolute inset-0 z-0 bg-gradient-to-b from-pulse-900/40 to-dark-900/80"
                                 style={{
-                                    backgroundImage: `url('/assets/bg3.png')`,
+                                    backgroundImage: `url(${bg3})`,
                                     backgroundSize: "cover",
                                     backgroundPosition: "bottom center",
                                     backgroundBlendMode: "overlay"

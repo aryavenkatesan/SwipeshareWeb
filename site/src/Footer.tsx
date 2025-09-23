@@ -1,4 +1,4 @@
-import React from "react";
+import logo from '/assets/logo.png'
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
@@ -16,7 +16,7 @@ const Footer = () => {
                             <div className="mb-4">
                                 {/* Logo - Replace with your actual logo */}
                                 <div className="flex items-center gap-2 mb-3">
-                                    <img src="/assets/logo.png" alt="Swipeshare logo" className="h-6 lg:h-8 w-auto pr-1" />
+                                    <img src={logo} alt="Swipeshare logo" className="h-6 lg:h-8 w-auto pr-1" />
                                     <h3 className="text-xl  text-white" style={{
                                         fontFamily: 'Montserrat', fontWeight: 300
                                     }}>Swipeshare</h3>

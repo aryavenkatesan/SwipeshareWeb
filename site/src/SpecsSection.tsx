@@ -1,4 +1,5 @@
-import React from "react";
+import bg1 from '/assets/bg1.jpg'
+// import React from "react";
 
 const SpecsSection = () => {
     return (
@@ -21,7 +22,7 @@ const SpecsSection = () => {
                         <span
                             className="block bg-clip-text text-transparent bg-cover bg-center"
                             style={{
-                                backgroundImage: `url('/assets/bg1.jpg')`,
+                                backgroundImage: `url(${bg1})`,
                             }}
                         >
                             Atlas works with your team, not instead of it. By handling repetitive tasks, improving safety conditions, and learning from every interaction, Atlas helps humans focus on what they do best: create, solve, and innovate.

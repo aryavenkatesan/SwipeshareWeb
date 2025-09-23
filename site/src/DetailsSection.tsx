@@ -1,5 +1,5 @@
-// use public assets via absolute paths
-
+import bg2 from '/assets/bg2.png'
+import bg3 from '/assets/bg3.png'
 
 const DetailsSection = () => {
 
@@ -10,7 +10,7 @@ const DetailsSection = () => {
                 <div className="rounded-2xl sm:rounded-3xl overflow-hidden shadow-elegant text-right">
                     {/* Card Header with background image instead of gradient */}
                     <div className="relative h-48 sm:h-64 p-6 sm:p-8 flex items-end justify-end" style={{
-                        backgroundImage: `url('/assets/bg3.png')`,
+                        backgroundImage: `url(${bg3})`,
                         backgroundSize: "cover",
                         backgroundPosition: "center"
                     }}>
@@ -101,7 +101,7 @@ const DetailsSection = () => {
                 <div className="rounded-2xl sm:rounded-3xl overflow-hidden shadow-elegant">
                     {/* Card Header with background image instead of gradient */}
                     <div className="relative h-48 sm:h-64 p-6 sm:p-8 flex flex-col items-start" style={{
-                        backgroundImage: `url('/assets/bg2.png')`,
+                        backgroundImage: `url(${bg2})`,
                         backgroundSize: "cover",
                         backgroundPosition: "center"
                     }}>
