@@ -175,7 +175,7 @@ function Hero() {
             {/* image */}
             <div>
                 <img
-                    className="lg:max-w-[50vw] lg:max-h-lvh h-fit w-full max-w-md mx-auto"
+                    className="lg:max-w-[50vw] lg:max-h-lvh h-full sm:h-fit w-full max-w-md mx-auto"
                     src={handMockup}
                     alt="hand mockup"
                 />

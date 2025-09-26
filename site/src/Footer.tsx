@@ -13,10 +13,10 @@ const Footer = () => {
         }}>
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Main Footer Content */}
-                <div className="py-12 md:py-16">
+                <div className="pt-12 pb-2 md:py-16">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                         {/* Logo and Company Info */}
-                        <div className="lg:col-span-1">
+                        <div className="hidden lg:col-span-1 sm:block">
                             <div className="mb-4">
                                 {/* Logo - Replace with your actual logo */}
                                 <div className="flex items-center gap-2 mb-3">
@@ -26,7 +26,10 @@ const Footer = () => {
                                     }}>Swipeshare</h3>
                                 </div>
                                 <p className="text-sm text-gray-400">
-                                    Revolutionizing social commerce through innovative connections and rewards.
+                                    Sell. Buy. Swipe.
+                                    <br />
+                                    <br />
+                                    Created by Students for Students.
                                 </p>
                             </div>
                         </div>
@@ -123,7 +126,7 @@ const Footer = () => {
                                     </svg>
                                 </a>
                             </div>
-                            <div className="space-y-2 text-sm">
+                            <div className="hidden sm:block space-y-2 text-sm ">
                                 <p>Stay updated with our latest features and updates!</p>
                             </div>
                         </div>
@@ -131,7 +134,7 @@ const Footer = () => {
                 </div>
 
                 {/* Bottom Bar */}
-                <div className="border-t border-gray-800 py-6">
+                <div className="border-t border-gray-800 py-6 sm:pt-2">
                     <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
                         {/* Copyright */}
                         <div className="text-sm text-gray-400">

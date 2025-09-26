@@ -100,7 +100,7 @@ const HumanoidSection = () => {
                         </h2>
                     </div> */}
 
-                    <div ref={cardsContainerRef} className="relative flex-1 perspective-1000 mt-20 lg:mt-24">
+                    <div ref={cardsContainerRef} className="relative flex-1 perspective-1000 mt-8 lg:mt-24">
                         {/* First Card */}
                         <div
                             className={`absolute inset-0 overflow-hidden shadow-xl ${isFirstCardVisible ? 'animate-card-enter' : ''}`}
