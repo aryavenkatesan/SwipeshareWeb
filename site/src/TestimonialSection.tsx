@@ -1,4 +1,4 @@
-// import React from "react";
+import { useInView } from "react-intersection-observer"
 
 const TestimonialSection = () => {
     const testimonials = [
@@ -17,10 +17,19 @@ const TestimonialSection = () => {
             title: "Founder, Artisan Collective",
             quote: "As a small business owner, SwipeShare gave us the tools to compete with larger brands. The platform is intuitive and our sales have grown 200%.",
         },
-    ];
+    ]
+
+    const { ref, inView } = useInView({
+        threshold: 0.2,
+        triggerOnce: true,
+    })
 
     return (
-        <section className="w-full py-12 sm:py-16 lg:py-20 bg-gray-50" id="testimonials">
+        <section
+            className="w-full py-12 sm:py-16 lg:py-20 bg-gray-50"
+            id="testimonials"
+            ref={ref}
+        >
             <div className="container px-4 sm:px-6 lg:px-8 mx-auto">
                 {/* Section Header */}
                 <div className="text-center mb-12 sm:mb-16">
@@ -37,7 +46,14 @@ const TestimonialSection = () => {
                     {testimonials.map((testimonial, index) => (
                         <div
                             key={index}
-                            className="bg-white rounded-lg shadow-lg p-6 sm:p-8 hover:shadow-xl transition-shadow duration-300"
+                            className={`
+                bg-white rounded-lg shadow-lg p-6 sm:p-8 
+                transform transition-all duration-700 ease-out
+                ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}
+              `}
+                            style={{
+                                transitionDelay: `${index * 200}ms`, // stagger by 200ms
+                            }}
                         >
                             {/* Quote Icon */}
                             <div className="mb-4">
@@ -57,37 +73,15 @@ const TestimonialSection = () => {
 
                             {/* Author Info */}
                             <div className="mt-auto">
-                                <p className="font-semibold text-gray-900">
-                                    {testimonial.name}
-                                </p>
-                                <p className="text-sm text-gray-600">
-                                    {testimonial.title}
-                                </p>
+                                <p className="font-semibold text-gray-900">{testimonial.name}</p>
+                                <p className="text-sm text-gray-600">{testimonial.title}</p>
                             </div>
                         </div>
                     ))}
                 </div>
-
-                {/* Optional: Add rating stars */}
-                {/* <div className="mt-8 text-center">
-                    <div className="flex justify-center items-center gap-1 mb-2">
-                        {[...Array(5)].map((_, i) => (
-                            <svg
-                                key={i}
-                                className="w-5 h-5 text-yellow-400 fill-current"
-                                viewBox="0 0 20 20"
-                            >
-                                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
-                            </svg>
-                        ))}
-                    </div>
-                    <p className="text-gray-600 text-sm">
-                        Rated 4.9/5 based on 2,000+ reviews
-                    </p>
-                </div> */}
             </div>
         </section>
-    );
-};
+    )
+}
 
-export default TestimonialSection;
+export default TestimonialSection

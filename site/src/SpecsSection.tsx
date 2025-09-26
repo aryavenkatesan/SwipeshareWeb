@@ -3,7 +3,7 @@ import bg1 from '/assets/bg1.jpg'
 
 const SpecsSection = () => {
     return (
-        <section className="w-full py-6 sm:py-10 bg-white" id="specifications">
+        <section className="w-full py-6 sm:py-10 bg-white" id="features">
             <div className="container px-4 sm:px-6 lg:px-8 mx-auto">
                 {/* Header with badge and line */}
                 <div className="flex items-center gap-4 mb-8 sm:mb-16">
@@ -25,7 +25,7 @@ const SpecsSection = () => {
                                 backgroundImage: `url(${bg1})`,
                             }}
                         >
-                            Atlas works with your team, not instead of it. By handling repetitive tasks, improving safety conditions, and learning from every interaction, Atlas helps humans focus on what they do best: create, solve, and innovate.
+                            Swipeshare helps students make the most out of their meal plans. By connecting those with too many swipes with those who don’t have enough, we’ve created a system where everyone wins.
                         </span>
                     </h2>
                 </div>

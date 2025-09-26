@@ -1,19 +1,31 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import logo from '/assets/logo.png'
+import { useLenis } from "./components/lenis"
 
 function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const lenis = useLenis();
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
 
-    const handleNavClick = (section: string) => {
+    const handleNavClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, section: string) => {
+        e.preventDefault();
         setIsMenuOpen(false);
-        // Scroll to section logic here
-        const element = document.querySelector(section);
-        element?.scrollIntoView({ behavior: 'smooth' });
-    };
+
+        if (lenis) {
+            lenis.scrollTo(section, { offset: -80, duration: 1.2 });
+        } else {
+            // Fallback to native scrolling
+            const element = document.querySelector(section);
+            if (element) {
+                const yOffset = -80;
+                const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+            }
+        }
+    }, [lenis]);
 
     return (
         <>
@@ -28,13 +40,25 @@ function Header() {
 
                     {/* Desktop Navigation */}
                     <nav className="hidden lg:flex gap-4" style={{ fontFamily: 'Montserrat', fontWeight: 400 }}>
-                        <a href="#home" className="px-6 py-1.5 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 hover:bg-white/30 hover:text-[#A98CE4] transition-all duration-200">
+                        <a
+                            href="#home"
+                            onClick={(e) => handleNavClick(e, '#home')}
+                            className="px-6 py-1.5 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 hover:bg-white/30 hover:text-[#A98CE4] transition-all duration-200"
+                        >
                             Home
                         </a>
-                        <a href="#about" className="px-6 py-1.5 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 hover:bg-white/30 hover:text-[#A98CE4] transition-all duration-200">
+                        <a
+                            href="#features"
+                            onClick={(e) => handleNavClick(e, '#features')}
+                            className="px-6 py-1.5 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 hover:bg-white/30 hover:text-[#A98CE4] transition-all duration-200"
+                        >
                             About
                         </a>
-                        <a href="#contact" className="px-6 py-1.5 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 hover:bg-white/30 hover:text-[#A98CE4] transition-all duration-200">
+                        <a
+                            href="#contact"
+                            onClick={(e) => handleNavClick(e, '#contact')}
+                            className="px-6 py-1.5 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 hover:bg-white/30 hover:text-[#A98CE4] transition-all duration-200"
+                        >
                             Contact
                         </a>
                     </nav>
@@ -77,21 +101,21 @@ function Header() {
                     <div className="relative flex flex-col pt-20 px-8" style={{ fontFamily: 'Montserrat', fontWeight: 400 }}>
                         <a
                             href="#home"
-                            onClick={() => handleNavClick('#home')}
+                            onClick={(e) => handleNavClick(e, '#home')}
                             className="py-4 text-2xl border-b border-gray-200/50 hover:text-[#A98CE4] transition-colors duration-200"
                         >
                             Home
                         </a>
                         <a
-                            href="#about"
-                            onClick={() => handleNavClick('#about')}
+                            href="#features"
+                            onClick={(e) => handleNavClick(e, '#features')}
                             className="py-4 text-2xl border-b border-gray-200/50 hover:text-[#A98CE4] transition-colors duration-200"
                         >
                             About
                         </a>
                         <a
                             href="#contact"
-                            onClick={() => handleNavClick('#contact')}
+                            onClick={(e) => handleNavClick(e, '#contact')}
                             className="py-4 text-2xl hover:text-[#A98CE4] transition-colors duration-200"
                         >
                             Contact

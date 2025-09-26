@@ -1,194 +1,154 @@
+import { useInView } from "react-intersection-observer"
 import bg2 from '/assets/bg2.png'
 import bg3 from '/assets/bg3.png'
 
 const DetailsSection = () => {
+    const { ref, inView } = useInView({
+        threshold: 0.2,   // fade in when 20% in view
+        triggerOnce: true // trigger only once
+    })
 
-    return <section id="details" className="w-full bg-white pb-8">
-        <div className="container px-4 sm:px-6 lg:px-8 mx-auto">
-            <div className="grid grid-cols-1 gap-6 md:gap-8 lg:grid-cols-2">
-                {/* Left Card - The Details */}
-                <div className="rounded-2xl sm:rounded-3xl overflow-hidden shadow-elegant text-right">
-                    {/* Card Header with background image instead of gradient */}
-                    <div className="relative h-48 sm:h-64 p-6 sm:p-8 flex items-end justify-end" style={{
-                        backgroundImage: `url(${bg3})`,
-                        backgroundSize: "cover",
-                        backgroundPosition: "center"
-                    }}>
-                        <h2 className="text-2xl sm:text-3xl font-display text-white font-bold ">
-                            The details
-                        </h2>
-                    </div>
+    return (
+        <section id="how-it-works" className="w-full bg-white pb-8">
+            <div className="container px-4 sm:px-6 lg:px-8 mx-auto">
+                <div ref={ref} className="grid grid-cols-1 gap-6 md:gap-8 lg:grid-cols-2">
+                    {/* Left Card - For Buyers */}
+                    <div
+                        className={`rounded-2xl sm:rounded-3xl overflow-hidden shadow-elegant text-right transform transition-all duration-700 ease-out
+            ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+                        style={{ transitionDelay: "0ms" }}
+                    >
+                        {/* Header */}
+                        <div
+                            className="relative h-24 sm:h-48 p-6 sm:p-8 flex items-end justify-end"
+                            style={{
+                                backgroundImage: `url(${bg3})`,
+                                backgroundSize: "cover",
+                                backgroundPosition: "center",
+                            }}
+                        >
+                            <h2 className="text-2xl sm:text-3xl font-display text-white font-bold">
+                                For Buyers
+                            </h2>
+                        </div>
 
-                    {/* Card Content */}
-                    <div className="bg-white p-4 sm:p-8" style={{
-                        backgroundColor: "#FFFFFF",
-                        border: "1px solid #ECECEC"
-                    }}>
-                        <h3 className="text-lg sm:text-xl font-display mb-6 sm:mb-8">
-                            Precision engineering meets adaptive intelligence
-                        </h3>
+                        {/* Content */}
+                        <div
+                            className="bg-white p-4 sm:p-8"
+                            style={{
+                                backgroundColor: "#FFFFFF",
+                                border: "1px solid #ECECEC",
+                            }}
+                        >
+                            <h3 className="text-lg font-display mb-6 sm:mb-8 px-4 sm:px-0 sm:pl-16 text-center sm:text-right">
+                                The app allows students to purchase singular meal swipes at a lower price. Whether it's because they ran out of swipes before the end of the semester or they just don’t feel like cooking that day, buyers are able to eat in the dining halls without the hassle of an expensive meal plan.
+                            </h3>
 
-                        <div className="space-y-4 sm:space-y-6">
-                            <div className="flex items-start gap-3">
-                                <div className="w-6 h-6 rounded-full bg-dark-900 flex items-center justify-center mt-1 flex-shrink-0">
-                                    <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M1 5L5 9L13 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                    </svg>
-                                </div>
-                                <div className="flex-1">
-                                    <div className="p-3 rounded-lg bg-gray-50/80 backdrop-blur-sm border border-gray-100">
-                                        <span className="font-semibold text-base">Height:</span> 5'8"
+                            <div className="space-y-4 sm:space-y-6">
+                                {[
+                                    "On Demand Food Options",
+                                    "Flexible Timing",
+                                    "No long term commitment",
+                                ].map((text, i) => (
+                                    <div className="flex items-start gap-3" key={i}>
+                                        <div className="w-6 h-6 rounded-full bg-dark-900 flex items-center justify-center mt-1 flex-shrink-0">
+                                            <svg
+                                                width="14"
+                                                height="10"
+                                                viewBox="0 0 14 10"
+                                                fill="none"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                                <path
+                                                    d="M1 5L5 9L13 1"
+                                                    stroke="white"
+                                                    strokeWidth="2"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                />
+                                            </svg>
+                                        </div>
+                                        <div className="flex-1">
+                                            <div className="p-3 rounded-lg bg-gray-50/80 backdrop-blur-sm border border-gray-100">
+                                                <span className="font-semibold text-base">{text}</span>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-
-                            <div className="flex items-start gap-3">
-                                <div className="w-6 h-6 rounded-full bg-dark-900 flex items-center justify-center mt-1 flex-shrink-0">
-                                    <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M1 5L5 9L13 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                    </svg>
-                                </div>
-                                <div className="flex-1">
-                                    <div className="p-3 rounded-lg bg-gray-50/80 backdrop-blur-sm border border-gray-100">
-                                        <span className="font-semibold text-base">Capacity:</span> 55lbs
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="flex items-start gap-3">
-                                <div className="w-6 h-6 rounded-full bg-dark-900 flex items-center justify-center mt-1 flex-shrink-0">
-                                    <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M1 5L5 9L13 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                    </svg>
-                                </div>
-                                <div className="flex-1">
-                                    <div className="p-3 rounded-lg bg-gray-50/80 backdrop-blur-sm border border-gray-100">
-                                        <span className="font-semibold text-base">Weight:</span> 140lbs
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="flex items-start gap-3">
-                                <div className="w-6 h-6 rounded-full bg-dark-900 flex items-center justify-center mt-1 flex-shrink-0">
-                                    <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M1 5L5 9L13 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                    </svg>
-                                </div>
-                                <div className="flex-1">
-                                    <div className="p-3 rounded-lg bg-gray-50/80 backdrop-blur-sm border border-gray-100">
-                                        <span className="font-semibold text-base">Uptime:</span> 6hr
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="flex items-start gap-3">
-                                <div className="w-6 h-6 rounded-full bg-dark-900 flex items-center justify-center mt-1 flex-shrink-0">
-                                    <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M1 5L5 9L13 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                    </svg>
-                                </div>
-                                <div className="flex-1">
-                                    <div className="p-3 rounded-lg bg-gray-50/80 backdrop-blur-sm border border-gray-100">
-                                        <span className="font-semibold text-base">Movement:</span> 1.5M/S
-                                    </div>
-                                </div>
+                                ))}
                             </div>
                         </div>
                     </div>
-                </div>
 
-                {/* Right Card - Contact Form */}
-                <div className="rounded-2xl sm:rounded-3xl overflow-hidden shadow-elegant">
-                    {/* Card Header with background image instead of gradient */}
-                    <div className="relative h-48 sm:h-64 p-6 sm:p-8 flex flex-col items-start" style={{
-                        backgroundImage: `url(${bg2})`,
-                        backgroundSize: "cover",
-                        backgroundPosition: "center"
-                    }}>
-                        <h2 className="text-2xl sm:text-3xl font-display text-white font-bold mt-auto">
-                            See it for yourself
-                        </h2>
-                    </div>
+                    {/* Right Card - For Sellers */}
+                    <div
+                        className={`rounded-2xl sm:rounded-3xl overflow-hidden shadow-elegant transform transition-all duration-700 ease-out
+            ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+                        style={{ transitionDelay: "300ms" }} // <- stagger delay
+                    >
+                        {/* Header */}
+                        <div
+                            className="relative h-24 sm:h-48 p-6 sm:p-8 flex flex-col items-start"
+                            style={{
+                                backgroundImage: `url(${bg2})`,
+                                backgroundSize: "cover",
+                                backgroundPosition: "center",
+                            }}
+                        >
+                            <h2 className="text-2xl sm:text-3xl font-display text-white font-bold mt-auto">
+                                For Sellers
+                            </h2>
+                        </div>
 
-                    {/* Card Content - Form */}
-                    <div className="bg-white p-4 sm:p-8" style={{
-                        backgroundColor: "#FFFFFF",
-                        border: "1px solid #ECECEC"
-                    }}>
-                        <h3 className="text-lg sm:text-xl font-display mb-6 sm:mb-8">
-                            Precision engineering meets adaptive intelligence
-                        </h3>
+                        {/* Content */}
+                        <div
+                            className="bg-white p-4 sm:p-8"
+                            style={{
+                                backgroundColor: "#FFFFFF",
+                                border: "1px solid #ECECEC",
+                            }}
+                        >
+                            <h3 className="text-lg font-display mb-6 sm:mb-8 px-4 sm:px-0 sm:pr-16 text-center sm:text-left">
+                                Instead of letting unused meal swipes go to waste at the end of each semester, sellers list their swipes for other students to buy. The app lets sellers find and connect with the best match based on preferred meetup time and dining hall location and get paid.
+                            </h3>
 
-                        <div className="space-y-4 sm:space-y-6">
-                            <div className="flex items-start gap-3">
-                                <div className="w-6 h-6 rounded-full bg-dark-900 flex items-center justify-center mt-1 flex-shrink-0">
-                                    <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M1 5L5 9L13 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                    </svg>
-                                </div>
-                                <div className="flex-1">
-                                    <div className="p-3 rounded-lg bg-gray-50/80 backdrop-blur-sm border border-gray-100">
-                                        <span className="font-semibold text-base">Height:</span> 5'8"
+                            <div className="space-y-4 sm:space-y-6">
+                                {[
+                                    "Swipe Reimbursement",
+                                    "Consistent Revenue",
+                                    "Conveniently help your peers",
+                                ].map((text, i) => (
+                                    <div className="flex items-start gap-3" key={i}>
+                                        <div className="flex-1">
+                                            <div className="p-3 rounded-lg bg-gray-50/80 backdrop-blur-sm border border-gray-100">
+                                                <span className="font-semibold text-base">{text}</span>
+                                            </div>
+                                        </div>
+                                        <div className="w-6 h-6 rounded-full bg-dark-900 flex items-center justify-center mt-1 flex-shrink-0">
+                                            <svg
+                                                width="14"
+                                                height="10"
+                                                viewBox="0 0 14 10"
+                                                fill="none"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                                <path
+                                                    d="M1 5L5 9L13 1"
+                                                    stroke="white"
+                                                    strokeWidth="2"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                />
+                                            </svg>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-
-                            <div className="flex items-start gap-3">
-                                <div className="w-6 h-6 rounded-full bg-dark-900 flex items-center justify-center mt-1 flex-shrink-0">
-                                    <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M1 5L5 9L13 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                    </svg>
-                                </div>
-                                <div className="flex-1">
-                                    <div className="p-3 rounded-lg bg-gray-50/80 backdrop-blur-sm border border-gray-100">
-                                        <span className="font-semibold text-base">Capacity:</span> 55lbs
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="flex items-start gap-3">
-                                <div className="w-6 h-6 rounded-full bg-dark-900 flex items-center justify-center mt-1 flex-shrink-0">
-                                    <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M1 5L5 9L13 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                    </svg>
-                                </div>
-                                <div className="flex-1">
-                                    <div className="p-3 rounded-lg bg-gray-50/80 backdrop-blur-sm border border-gray-100">
-                                        <span className="font-semibold text-base">Weight:</span> 140lbs
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="flex items-start gap-3">
-                                <div className="w-6 h-6 rounded-full bg-dark-900 flex items-center justify-center mt-1 flex-shrink-0">
-                                    <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M1 5L5 9L13 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                    </svg>
-                                </div>
-                                <div className="flex-1">
-                                    <div className="p-3 rounded-lg bg-gray-50/80 backdrop-blur-sm border border-gray-100">
-                                        <span className="font-semibold text-base">Uptime:</span> 6hr
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="flex items-start gap-3">
-                                <div className="w-6 h-6 rounded-full bg-dark-900 flex items-center justify-center mt-1 flex-shrink-0">
-                                    <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M1 5L5 9L13 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                    </svg>
-                                </div>
-                                <div className="flex-1">
-                                    <div className="p-3 rounded-lg bg-gray-50/80 backdrop-blur-sm border border-gray-100">
-                                        <span className="font-semibold text-base">Movement:</span> 1.5M/S
-                                    </div>
-                                </div>
+                                ))}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>;
-};
-export default DetailsSection;
+        </section>
+    )
+}
+
+export default DetailsSection

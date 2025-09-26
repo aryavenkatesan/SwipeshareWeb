@@ -1,7 +1,11 @@
 import logo from '/assets/logo.png'
+import { useLenis } from "./components/lenis"
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
+    const lenis = useLenis()
+
+    console.log('Lenis instance:', lenis);
 
     return (
         <footer className="bg-gray-900 text-gray-300" style={{
@@ -32,24 +36,34 @@ const Footer = () => {
                             <h4 className="text-white font-medium mb-4">Quick Links</h4>
                             <ul className="space-y-2 text-white/80">
                                 <li>
-                                    <a href="#features" className="hover:text-white transition-colors">
+                                    <span
+                                        role="button"
+                                        tabIndex={0}
+                                        onClick={() => lenis?.scrollTo("#features", { offset: -80, duration: 1.2 })}
+                                        className="hover:text-white transition-colors cursor-pointer"
+                                    >
                                         Features
-                                    </a>
+                                    </span>
                                 </li>
                                 <li>
-                                    <a href="#how-it-works" className="hover:text-white transition-colors">
+                                    <span
+                                        role="button"
+                                        tabIndex={0}
+                                        onClick={() => lenis?.scrollTo("#how-it-works", { offset: -80, duration: 1.2 })}
+                                        className="hover:text-white transition-colors cursor-pointer"
+                                    >
                                         How It Works
-                                    </a>
+                                    </span>
                                 </li>
                                 <li>
-                                    <a href="#testimonials" className="hover:text-white transition-colors">
+                                    <span
+                                        role="button"
+                                        tabIndex={0}
+                                        onClick={() => lenis?.scrollTo("#testimonials", { offset: -80, duration: 1.2 })}
+                                        className="hover:text-white transition-colors cursor-pointer"
+                                    >
                                         Testimonials
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#pricing" className="hover:text-white transition-colors">
-                                        Pricing
-                                    </a>
+                                    </span>
                                 </li>
                             </ul>
                         </div>

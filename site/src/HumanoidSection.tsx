@@ -130,7 +130,7 @@ const HumanoidSection = () => {
                             <div className="relative z-10 p-5 sm:p-6 md:p-8 h-full flex items-center">
                                 <div className="max-w-lg">
                                     <h3 className="text-2xl sm:text-3xl md:text-4xl font-montserrat text-white font-bold leading-tight mb-4">
-                                        We're revolutionizing social commerce
+                                        We're building communities, <span className="text-swipe-400">not just transactions</span>
                                     </h3>
                                 </div>
                             </div>
@@ -159,14 +159,16 @@ const HumanoidSection = () => {
 
                             <div className="absolute top-4 right-4 z-20">
                                 <div className="inline-flex items-center justify-center px-4 py-2 rounded-full bg-white/20 backdrop-blur-sm text-white">
-                                    <span className="text-sm font-medium">The vision</span>
+                                    <span className="text-sm font-medium">The Mission</span>
                                 </div>
                             </div>
 
                             <div className="relative z-10 p-5 sm:p-6 md:p-8 h-full flex items-center">
                                 <div className="max-w-lg">
                                     <h3 className="text-2xl sm:text-3xl md:text-4xl font-montserrat text-white font-bold leading-tight mb-4">
-                                        We're connecting buyers and sellers through rewards
+                                        No more wasted swipes,
+                                        <br />
+                                        No more missed meals
                                     </h3>
                                 </div>
                             </div>
@@ -195,14 +197,16 @@ const HumanoidSection = () => {
 
                             <div className="absolute top-4 right-4 z-20">
                                 <div className="inline-flex items-center justify-center px-4 py-2 rounded-full bg-white/20 backdrop-blur-sm text-white">
-                                    <span className="text-sm font-medium">The vision</span>
+                                    <span className="text-sm font-medium">The Method</span>
                                 </div>
                             </div>
 
                             <div className="relative z-10 p-5 sm:p-6 md:p-8 h-full flex items-center">
                                 <div className="max-w-lg">
                                     <h3 className="text-2xl sm:text-3xl md:text-4xl font-montserrat text-white font-bold leading-tight mb-4">
-                                        We're building communities, <span className="text-swipe-400">not just transactions</span>
+                                        Two students at a time,
+                                        <br />
+                                        One invaluable connection
                                     </h3>
                                 </div>
                             </div>
