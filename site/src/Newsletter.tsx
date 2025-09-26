@@ -41,7 +41,6 @@ const Newsletter = () => {
         try {
             // Using Google Apps Script Web App
 
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
             const response = await fetch(GOOGLE_SCRIPT_URL, {
                 method: 'POST',
                 mode: 'no-cors',
@@ -53,6 +52,7 @@ const Newsletter = () => {
                     timestamp: new Date().toISOString()
                 })
             });
+            console.log(response)
 
             // With no-cors, we can't read the response, so we assume success
             toast({

@@ -15,8 +15,8 @@ export const LenisProvider = ({ children }: { children: React.ReactNode }) => {
     const lenisInstance = new Lenis({
       lerp: 0.1,
       duration: 1.2,
-      easing: (t: number) => 1 - Math.pow(2, -10 * t),
-      wheelMultiplier: 1,
+      easing: (t: number) => 1 - Math.pow(2, -15 * t),
+      wheelMultiplier: 0.7,
       touchMultiplier: 1,
     })
 
