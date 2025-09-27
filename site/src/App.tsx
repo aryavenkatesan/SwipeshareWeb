@@ -1,4 +1,6 @@
+import { Routes, Route } from 'react-router-dom'
 import { LenisProvider } from "./components/lenis"
+import ContactSection from "./ContactSection"
 import DetailsSection from "./DetailsSection"
 import Footer from "./Footer"
 import Header from "./Header"
@@ -8,18 +10,38 @@ import LoadingScreen from "./LoadingScreen"
 import Newsletter from "./Newsletter"
 import SpecsSection from "./SpecsSection"
 import TestimonialSection from "./TestimonialSection"
+import PrivacyPolicy from './PrivacyPolicy'
+import TermsOfService from './TermsOfService'
+import CookiePolicy from './CookiePolicy'
 
-function App() {
+// Create a HomePage component with all sections except Contact
+function HomePage() {
   return (
-    <LenisProvider>
-      <LoadingScreen />
-      <Header />
+    <>
       <Hero />
       <HumanoidSection />
       <SpecsSection />
       <DetailsSection />
       <TestimonialSection />
       <Newsletter />
+    </>
+  )
+}
+
+function App() {
+  return (
+    <LenisProvider>
+      <LoadingScreen />
+      <Header />
+      <main>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/contact" element={<ContactSection />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-of-service" element={<TermsOfService />} />
+          <Route path="/cookie-policy" element={<CookiePolicy />} />
+        </Routes>
+      </main>
       <Footer />
     </LenisProvider>
   )

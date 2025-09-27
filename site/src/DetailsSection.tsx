@@ -3,24 +3,30 @@ import bg2 from '/assets/bg2.png'
 import bg3 from '/assets/bg3.png'
 
 const DetailsSection = () => {
-    const { ref, inView } = useInView({
-        threshold: 0.2,   // fade in when 20% in view
-        triggerOnce: true // trigger only once
+    // Separate intersection observers for each card
+    const { ref: leftCardRef, inView: leftCardInView } = useInView({
+        threshold: 0.15,
+        triggerOnce: true
+    })
+
+    const { ref: rightCardRef, inView: rightCardInView } = useInView({
+        threshold: 0.2,
+        triggerOnce: true
     })
 
     return (
         <section id="how-it-works" className="w-full bg-white pb-8">
             <div className="container px-4 sm:px-6 lg:px-8 mx-auto">
-                <div ref={ref} className="grid grid-cols-1 gap-6 md:gap-8 lg:grid-cols-2">
+                <div className="grid grid-cols-1 gap-6 md:gap-8 lg:grid-cols-2">
                     {/* Left Card - For Buyers */}
                     <div
-                        className={`rounded-2xl sm:rounded-3xl overflow-hidden shadow-elegant text-right transform transition-all duration-700 ease-out
-            ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-                        style={{ transitionDelay: "0ms" }}
+                        ref={leftCardRef}
+                        className={`rounded-2xl sm:rounded-3xl overflow-hidden shadow-elegant text-left sm:text-right transform transition-all duration-700 ease-out
+            ${leftCardInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
                     >
                         {/* Header */}
                         <div
-                            className="relative h-24 sm:h-48 p-6 sm:p-8 flex items-end justify-end"
+                            className="relative h-24 sm:h-48 p-6 sm:p-8 flex items-center sm:items-end justify-end"
                             style={{
                                 backgroundImage: `url(${bg3})`,
                                 backgroundSize: "cover",
@@ -41,7 +47,7 @@ const DetailsSection = () => {
                             }}
                         >
                             <h3 className="text-lg font-display mb-6 sm:mb-8 px-4 sm:px-0 sm:pl-16 text-center sm:text-right">
-                                The app allows students to purchase singular meal swipes at a lower price. Whether it's because they ran out of swipes before the end of the semester or they just don’t feel like cooking that day, buyers are able to eat in the dining halls without the hassle of an expensive meal plan.
+                                The app allows students to purchase singular meal swipes at a lower price. Whether it's because they ran out of swipes before the end of the semester or they just don't feel like cooking that day, buyers are able to eat in the dining halls without the hassle of an expensive meal plan.
                             </h3>
 
                             <div className="space-y-4 sm:space-y-6">
@@ -51,25 +57,11 @@ const DetailsSection = () => {
                                     "No long term commitment",
                                 ].map((text, i) => (
                                     <div className="flex items-start gap-3" key={i}>
-                                        <div className="w-6 h-6 rounded-full bg-dark-900 flex items-center justify-center mt-1 flex-shrink-0">
-                                            <svg
-                                                width="14"
-                                                height="10"
-                                                viewBox="0 0 14 10"
-                                                fill="none"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                            >
-                                                <path
-                                                    d="M1 5L5 9L13 1"
-                                                    stroke="white"
-                                                    strokeWidth="2"
-                                                    strokeLinecap="round"
-                                                    strokeLinejoin="round"
-                                                />
-                                            </svg>
+                                        <div className="sm:w-6 sm:h-6 rounded-full bg-dark-900 flex items-center justify-center mt-1 flex-shrink-0">
+
                                         </div>
                                         <div className="flex-1">
-                                            <div className="p-3 rounded-lg bg-gray-50/80 backdrop-blur-sm border border-gray-100">
+                                            <div className="p-3 rounded-lg bg-gray-50/80 backdrop-blur-sm border border-gray-100 text-center sm:text-right">
                                                 <span className="font-semibold text-base">{text}</span>
                                             </div>
                                         </div>
@@ -81,13 +73,13 @@ const DetailsSection = () => {
 
                     {/* Right Card - For Sellers */}
                     <div
+                        ref={rightCardRef}
                         className={`rounded-2xl sm:rounded-3xl overflow-hidden shadow-elegant transform transition-all duration-700 ease-out
-            ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-                        style={{ transitionDelay: "300ms" }} // <- stagger delay
+            ${rightCardInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
                     >
                         {/* Header */}
                         <div
-                            className="relative h-24 sm:h-48 p-6 sm:p-8 flex flex-col items-start"
+                            className="relative h-24 sm:h-48 p-6 sm:p-8 flex flex-col items-center sm:items-start"
                             style={{
                                 backgroundImage: `url(${bg2})`,
                                 backgroundSize: "cover",
@@ -119,26 +111,12 @@ const DetailsSection = () => {
                                 ].map((text, i) => (
                                     <div className="flex items-start gap-3" key={i}>
                                         <div className="flex-1">
-                                            <div className="p-3 rounded-lg bg-gray-50/80 backdrop-blur-sm border border-gray-100">
+                                            <div className="p-3 rounded-lg bg-gray-50/80 backdrop-blur-sm border border-gray-100 text-center sm:text-right">
                                                 <span className="font-semibold text-base">{text}</span>
                                             </div>
                                         </div>
-                                        <div className="w-6 h-6 rounded-full bg-dark-900 flex items-center justify-center mt-1 flex-shrink-0">
-                                            <svg
-                                                width="14"
-                                                height="10"
-                                                viewBox="0 0 14 10"
-                                                fill="none"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                            >
-                                                <path
-                                                    d="M1 5L5 9L13 1"
-                                                    stroke="white"
-                                                    strokeWidth="2"
-                                                    strokeLinecap="round"
-                                                    strokeLinejoin="round"
-                                                />
-                                            </svg>
+                                        <div className="sm:w-6 sm:h-6 rounded-full bg-dark-900 flex items-center justify-center mt-1 flex-shrink-0">
+
                                         </div>
                                     </div>
                                 ))}

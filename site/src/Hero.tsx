@@ -179,7 +179,7 @@ function Hero() {
                     src={handMockup}
                     alt="hand mockup"
                 />
-                <div className="absolute bottom-10 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
+                <div className="absolute bottom-10 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent pointer-events-none translate-y-10 sm:-translate-y-0"></div>
             </div>
         </div>
     )

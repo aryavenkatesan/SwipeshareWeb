@@ -1,11 +1,64 @@
 import logo from '/assets/logo.png'
 import { useLenis } from "./components/lenis"
+import { useCallback, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
     const lenis = useLenis()
+    const navigate = useNavigate();
+    const location = useLocation();
 
-    console.log('Lenis instance:', lenis);
+    const scrollToSection = useCallback((section: string) => {
+        console.log('Attempting to scroll to:', section);
+        const element = document.querySelector(section);
+        console.log('Element found:', element);
+
+        if (element) {
+            if (lenis) {
+                console.log('Using Lenis scroll');
+                lenis.scrollTo(section, { offset: -80, duration: 1.2 });
+            } else {
+                console.log('Using native scroll');
+                const yOffset = -80;
+                const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+            }
+        } else {
+            console.error(`Element ${section} not found!`);
+            const allIds = Array.from(document.querySelectorAll('[id]')).map(el => el.id);
+            console.log('Available IDs on page:', allIds);
+        }
+    }, [lenis]);
+
+    const handleNavClick = useCallback((section: string) => {
+        if (location.pathname !== '/') {
+            navigate('/', { state: { scrollTo: section } });
+        } else {
+            scrollToSection(section);
+        }
+    }, [location.pathname, navigate, scrollToSection]);
+
+    const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+        e.preventDefault();
+        navigate('/contact');
+    };
+
+
+    useEffect(() => {
+        if (location.pathname === '/' && location.state?.scrollTo) {
+            const timeouts = [100, 300, 500, 1000];
+            timeouts.forEach(timeout => {
+                setTimeout(() => {
+                    scrollToSection(location.state.scrollTo);
+                }, timeout);
+            });
+            setTimeout(() => {
+                window.history.replaceState({}, document.title);
+            }, 1500);
+        }
+    }, [location, scrollToSection]);
+
 
     return (
         <footer className="bg-gray-900 text-gray-300" style={{
@@ -19,7 +72,10 @@ const Footer = () => {
                         <div className="hidden lg:col-span-1 sm:block">
                             <div className="mb-4">
                                 {/* Logo - Replace with your actual logo */}
-                                <div className="flex items-center gap-2 mb-3">
+                                <div
+                                    className="flex items-center gap-2 mb-3 cursor-pointer"
+                                    onClick={() => handleNavClick("#home")}
+                                >
                                     <img src={logo} alt="Swipeshare logo" className="h-6 lg:h-8 w-auto pr-1" />
                                     <h3 className="text-xl  text-white" style={{
                                         fontFamily: 'Montserrat', fontWeight: 300
@@ -42,7 +98,7 @@ const Footer = () => {
                                     <span
                                         role="button"
                                         tabIndex={0}
-                                        onClick={() => lenis?.scrollTo("#features", { offset: -80, duration: 1.2 })}
+                                        onClick={() => handleNavClick("#features")}
                                         className="hover:text-white transition-colors cursor-pointer"
                                     >
                                         Features
@@ -52,20 +108,20 @@ const Footer = () => {
                                     <span
                                         role="button"
                                         tabIndex={0}
-                                        onClick={() => lenis?.scrollTo("#how-it-works", { offset: -80, duration: 1.2 })}
+                                        onClick={() => handleNavClick("#testimonials")}
                                         className="hover:text-white transition-colors cursor-pointer"
                                     >
-                                        How It Works
+                                        Testimonials
                                     </span>
                                 </li>
                                 <li>
                                     <span
                                         role="button"
                                         tabIndex={0}
-                                        onClick={() => lenis?.scrollTo("#testimonials", { offset: -80, duration: 1.2 })}
+                                        onClick={() => handleContactClick}
                                         className="hover:text-white transition-colors cursor-pointer"
                                     >
-                                        Testimonials
+                                        Contact
                                     </span>
                                 </li>
                             </ul>

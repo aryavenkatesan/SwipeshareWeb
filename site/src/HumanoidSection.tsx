@@ -92,7 +92,7 @@ const HumanoidSection = () => {
             className="relative"
             style={{ height: '300vh' }}
         >
-            <section className="w-full h-screen py-10 md:py-16 sticky top-0 overflow-hidden bg-white -translate-y-10" id="why-humanoid">
+            <section className="w-full h-screen py-10 md:py-16 sticky top-0 overflow-hidden bg-white -translate-y-0 sm:-translate-y-10" id="why-humanoid">
                 <div className="container px-6 lg:px-8 mx-auto h-full flex flex-col">
                     {/* <div className="mb-2 md:mb-3">
                         <h2 className="section-title text-3xl sm:text-4xl md:text-5xl font-montserrat font-bold mb-1 md:mb-2">

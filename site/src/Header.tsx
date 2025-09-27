@@ -1,37 +1,85 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import logo from '/assets/logo.png'
 import { useLenis } from "./components/lenis"
+import { useNavigate, useLocation } from 'react-router-dom';
 
 function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const lenis = useLenis();
+    const navigate = useNavigate();
+    const location = useLocation();
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
 
-    const handleNavClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, section: string) => {
-        e.preventDefault();
-        setIsMenuOpen(false);
+    const scrollToSection = useCallback((section: string) => {
+        console.log('Attempting to scroll to:', section);
+        const element = document.querySelector(section);
+        console.log('Element found:', element);
 
-        if (lenis) {
-            lenis.scrollTo(section, { offset: -80, duration: 1.2 });
-        } else {
-            // Fallback to native scrolling
-            const element = document.querySelector(section);
-            if (element) {
+        if (element) {
+            if (lenis) {
+                console.log('Using Lenis scroll');
+                lenis.scrollTo(section, { offset: -80, duration: 1.2 });
+            } else {
+                console.log('Using native scroll');
                 const yOffset = -80;
                 const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
                 window.scrollTo({ top: y, behavior: 'smooth' });
             }
+        } else {
+            console.error(`Element ${section} not found!`);
+            // List all elements with IDs to debug
+            const allIds = Array.from(document.querySelectorAll('[id]')).map(el => el.id);
+            console.log('Available IDs on page:', allIds);
         }
     }, [lenis]);
+
+    const handleNavClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, section: string) => {
+        e.preventDefault();
+        setIsMenuOpen(false);
+
+        if (location.pathname !== '/') {
+            navigate('/', { state: { scrollTo: section } });
+        } else {
+            scrollToSection(section);
+        }
+    }, [location.pathname, navigate, scrollToSection]);
+
+    // Handle scrolling after navigation
+    useEffect(() => {
+        if (location.pathname === '/' && location.state?.scrollTo) {
+            // Increased timeout to ensure everything is loaded
+            const timeouts = [100, 300, 500, 1000]; // Try multiple times
+
+            timeouts.forEach(timeout => {
+                setTimeout(() => {
+                    scrollToSection(location.state.scrollTo);
+                }, timeout);
+            });
+
+            // Clear the state after the last attempt
+            setTimeout(() => {
+                window.history.replaceState({}, document.title);
+            }, 1500);
+        }
+    }, [location, scrollToSection]);
+
+    const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+        e.preventDefault();
+        setIsMenuOpen(false);
+        navigate('/contact');
+    };
 
     return (
         <>
             <header className="fixed top-0 left-0 right-0 z-50 bg-white/30 backdrop-blur-md shadow-sm border-b border-white/20">
                 <div className="flex items-center justify-between px-4 lg:px-12 py-4">
-                    <div className='flex flex-row items-center'>
+                    <div
+                        className='flex flex-row items-center cursor-pointer'
+                        onClick={() => navigate('/')}
+                    >
                         <img src={logo} alt="Swipeshare logo" className="h-6 lg:h-8 w-auto pr-2 lg:pr-4" />
                         <h1 className="text-xl lg:text-2xl" style={{
                             fontFamily: 'Montserrat', fontWeight: 300
@@ -41,22 +89,22 @@ function Header() {
                     {/* Desktop Navigation */}
                     <nav className="hidden lg:flex gap-4" style={{ fontFamily: 'Montserrat', fontWeight: 400 }}>
                         <a
-                            href="#home"
+                            href="/#home"
                             onClick={(e) => handleNavClick(e, '#home')}
                             className="px-6 py-1.5 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 hover:bg-white/30 hover:text-[#A98CE4] transition-all duration-200"
                         >
                             Home
                         </a>
                         <a
-                            href="#features"
+                            href="/#features"
                             onClick={(e) => handleNavClick(e, '#features')}
                             className="px-6 py-1.5 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 hover:bg-white/30 hover:text-[#A98CE4] transition-all duration-200"
                         >
                             About
                         </a>
                         <a
-                            href="#contact"
-                            onClick={(e) => handleNavClick(e, '#contact')}
+                            href="/contact"
+                            onClick={handleContactClick}
                             className="px-6 py-1.5 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 hover:bg-white/30 hover:text-[#A98CE4] transition-all duration-200"
                         >
                             Contact
@@ -81,7 +129,7 @@ function Header() {
                 </div>
             </header>
 
-            {/* Mobile Menu Overlay */}
+            {/* Mobile Menu Overlay - keeping the same */}
             <div className={`fixed inset-0 z-40 lg:hidden transition-all duration-300 ${isMenuOpen ? 'visible' : 'invisible'
                 }`}>
                 {/* Backdrop blur */}
@@ -115,7 +163,7 @@ function Header() {
                         </a>
                         <a
                             href="#contact"
-                            onClick={(e) => handleNavClick(e, '#contact')}
+                            onClick={handleContactClick}
                             className="py-4 text-2xl hover:text-[#A98CE4] transition-colors duration-200"
                         >
                             Contact
