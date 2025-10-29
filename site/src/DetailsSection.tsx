@@ -111,7 +111,7 @@ const DetailsSection = () => {
                                 ].map((text, i) => (
                                     <div className="flex items-start gap-3" key={i}>
                                         <div className="flex-1">
-                                            <div className="p-3 rounded-lg bg-gray-50/80 backdrop-blur-sm border border-gray-100 text-center sm:text-right">
+                                            <div className="p-3 rounded-lg bg-gray-50/80 backdrop-blur-sm border border-gray-100 text-center sm:text-left">
                                                 <span className="font-semibold text-base">{text}</span>
                                             </div>
                                         </div>
