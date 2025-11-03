@@ -53,3 +53,66 @@ body {
     font-family: 'Instrument Sans', sans-serif;
     font-weight: 400;
 }
+
+/* === Circle Animation === */
+@keyframes draw-circle {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+.animate-draw-circle {
+    fill: none;
+    stroke: white;
+    /* Starts as white */
+    stroke-linecap: round;
+    /* Rounded circle ends */
+    stroke-linejoin: round;
+    stroke-width: 2;
+
+    /* Stroke animation */
+    stroke-dasharray: 150;
+    stroke-dashoffset: 150;
+
+    /* Delay before draw begins */
+    animation: draw-circle 1.5s ease-out 0.8s forwards;
+
+    /* Transition from white to green smoothly */
+    animation-fill-mode: forwards;
+}
+
+/* Change circle color as it draws */
+.text-green-500 .animate-draw-circle {
+    animation: draw-circle 2s ease-out 1s forwards, change-color 0.2s linear 1s forwards;
+}
+
+@keyframes change-color {
+    from {
+        stroke: white;
+    }
+
+    to {
+        stroke: currentColor;
+    }
+}
+
+/* === Checkmark Animation === */
+@keyframes draw-check {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+.animate-draw-check {
+    fill: none;
+    stroke: currentColor;
+    /* Ensures visible green stroke */
+    stroke-dasharray: 30;
+    stroke-dashoffset: 30;
+
+    /* Starts after circle finishes */
+    animation: draw-check 1.5s ease-out 1.8s forwards;
+
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}

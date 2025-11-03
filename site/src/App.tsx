@@ -13,6 +13,7 @@ import TestimonialSection from "./TestimonialSection"
 import PrivacyPolicy from './PrivacyPolicy'
 import TermsOfService from './TermsOfService'
 import CookiePolicy from './CookiePolicy'
+import EmailVerification from './EmailVerification'
 
 // Create a HomePage component with all sections except Contact
 function HomePage() {
@@ -40,6 +41,7 @@ function App() {
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
           <Route path="/cookie-policy" element={<CookiePolicy />} />
+          <Route path="/auth" element={<EmailVerification />} />
         </Routes>
       </main>
       <Footer />
