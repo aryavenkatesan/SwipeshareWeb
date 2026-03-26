@@ -19,7 +19,7 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
     const [open, setOpen] = useState(false)
 
     return (
-        <div className="border-b" style={{ borderColor: "#333" }}>
+        <div className="border-b" style={{ borderColor: "#DDE4FF" }}>
             <button
                 onClick={() => setOpen(!open)}
                 className="w-full flex items-center justify-between py-5 text-left"
@@ -28,7 +28,7 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
                     style={{
                         fontFamily: "'Lexend', sans-serif",
                         fontWeight: 300,
-                        fontSize: "17px",
+                        fontSize: "clamp(15px, 4.5vw, 20px)",
                         color: "#FFFFFF",
                         paddingRight: "16px",
                     }}
@@ -38,7 +38,7 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
                 <span
                     className="flex-shrink-0 text-xl"
                     style={{
-                        color: "#A7B8FE",
+                        color: "#FFFFFF",
                         transform: open ? "rotate(45deg)" : "rotate(0deg)",
                         transition: "transform 0.3s ease",
                         fontFamily: "'Lexend', sans-serif",
@@ -61,8 +61,8 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
                         style={{
                             fontFamily: "'Lexend', sans-serif",
                             fontWeight: 300,
-                            fontSize: "13px",
-                            color: "#AEDEF2",
+                            fontSize: "clamp(12px, 3.5vw, 16px)",
+                            color: "#FFFFFF",
                         }}
                     >
                         {answer}
@@ -75,13 +75,13 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
 
 const FAQSection = () => {
     return (
-        <section className="py-16 px-6" id="faq" style={{ background: "#0F0F1A" }}>
+        <section className="py-16 px-6" id="faq" style={{ background: "#9A6CD9" }}>
             <div className="max-w-2xl mx-auto">
                 <h2
                     className="mb-8"
                     style={{
                         fontFamily: "'League Spartan', sans-serif",
-                        fontWeight: 700,
+                        fontWeight: 400,
                         fontSize: "clamp(36px, 6vw, 56px)",
                         color: "#FFFFFF",
                         lineHeight: 1,

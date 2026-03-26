@@ -69,7 +69,7 @@ const Footer = () => {
                 <div className="pt-12 pb-2 md:py-16">
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                         {/* Logo and Company Info */}
-                        <div className="hidden lg:col-span-1 sm:block">
+                        <div className="lg:col-span-1">
                             <div className="mb-4">
                                 {/* Logo - Replace with your actual logo */}
                                 <div

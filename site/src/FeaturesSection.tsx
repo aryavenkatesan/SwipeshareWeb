@@ -8,6 +8,8 @@ const features = [
     { label: "Swipe each other in!", color: "#A7B8FE" },
 ]
 
+const VH_PER_ITEM = 0.5  // viewports of scrolling required per bullet step
+
 const FeaturesSection = () => {
     const sectionRef = useRef<HTMLDivElement>(null)
     const [activeIndex, setActiveIndex] = useState(0)
@@ -28,7 +30,7 @@ const FeaturesSection = () => {
                 window.requestAnimationFrame(() => {
                     if (!sectionRef.current) return
                     const rect = sectionRef.current.getBoundingClientRect()
-                    const totalScroll = window.innerHeight * (features.length + 1)
+                    const totalScroll = window.innerHeight * features.length * VH_PER_ITEM
                     let progress = 0
                     if (rect.top <= 0) {
                         progress = Math.min(1, Math.max(0, Math.abs(rect.top) / totalScroll))
@@ -52,63 +54,72 @@ const FeaturesSection = () => {
         <div
             ref={sectionRef}
             className="relative"
-            style={{ height: `${(features.length + 2) * 100}vh` }}
+            style={{ height: `${(features.length * VH_PER_ITEM + 1) * 100}vh` }}
             id="features"
         >
             <section
                 className="sticky top-0 w-full overflow-hidden"
-                style={{ height: "100vh", background: "#E2ECF9" }}
+                style={{ height: "100vh", background: "#AEDEF2" }}
             >
                 <div className="h-full flex flex-col lg:flex-row px-6 lg:px-16 pt-20 pb-8 gap-8 max-w-6xl mx-auto">
                     {/* Left column: text + bullets */}
                     <div className="flex flex-col justify-center flex-1 min-w-0">
                         <p
-                            className="text-black mb-1"
-                            style={{ fontFamily: "'Lexend', sans-serif", fontWeight: 300, fontSize: "clamp(14px, 2vw, 17px)" }}
+                            className="mb-1"
+                            style={{ fontFamily: "'Lexend', sans-serif", fontWeight: 300, fontSize: "clamp(14px, 4vw, 22px)", color: "#6130A6" }}
                         >
                             Don't let your extra meal swipes go to waste.
                         </p>
                         <p
                             className="mb-8 lg:mb-12"
-                            style={{ fontFamily: "'Lexend', sans-serif", fontWeight: 300, fontSize: "clamp(14px, 2vw, 17px)", color: "#000000" }}
+                            style={{ fontFamily: "'Lexend', sans-serif", fontWeight: 300, fontSize: "clamp(14px, 4vw, 22px)", color: "#6130A6" }}
                         >
                             Don't overspend on on-campus lunch every day.
                         </p>
 
-                        <ul className="space-y-3 lg:space-y-4">
-                            {features.map((f, i) => (
-                                <li
-                                    key={i}
-                                    className="flex items-center gap-3"
+                        <div className="relative flex gap-4">
+                            {/* Progress bar track */}
+                            <div className="relative flex-shrink-0" style={{ width: "4px" }}>
+                                <div
+                                    className="absolute inset-0 rounded-full"
+                                    style={{ background: "#C0CCFF" }}
+                                />
+                                <div
+                                    className="absolute top-0 left-0 right-0 rounded-full"
                                     style={{
-                                        opacity: isIntersecting ? (activeIndex === i ? 1 : 0.35) : 0.35,
-                                        transform: activeIndex === i ? "translateX(8px)" : "translateX(0)",
-                                        transition: "opacity 0.4s ease, transform 0.4s ease",
-                                        fontFamily: "'Lexend', sans-serif",
-                                        fontWeight: activeIndex === i ? 400 : 300,
-                                        fontSize: "clamp(15px, 2.2vw, 20px)",
-                                        color: activeIndex === i ? "#6130A6" : "#000000",
+                                        background: "#6130A6",
+                                        height: `calc(${activeIndex / (features.length - 1)} * 100%)`,
+                                        transition: "height 0.4s ease",
                                     }}
-                                >
-                                    <span
-                                        className="w-2 h-2 rounded-full flex-shrink-0"
+                                />
+                            </div>
+
+                            {/* Labels */}
+                            <ul className="space-y-3 lg:space-y-4 flex-1">
+                                {features.map((f, i) => (
+                                    <li
+                                        key={i}
                                         style={{
-                                            background: activeIndex === i ? "#6130A6" : "#9A6CD9",
-                                            transform: activeIndex === i ? "scale(1.4)" : "scale(1)",
-                                            transition: "background 0.4s ease, transform 0.4s ease",
+                                            opacity: isIntersecting ? (activeIndex === i ? 1 : 0.35) : 0.35,
+                                            transition: "opacity 0.4s ease, font-size 0.4s ease",
+                                            fontFamily: "'Lexend', sans-serif",
+                                            fontWeight: activeIndex === i ? 700 : 300,
+                                            fontSize: activeIndex === i ? "clamp(17px, 4.5vw, 26px)" : "clamp(14px, 4vw, 20px)",
+                                            color: activeIndex === i ? "#6130A6" : "#000000",
                                         }}
-                                    />
-                                    {f.label}
-                                </li>
-                            ))}
-                        </ul>
+                                    >
+                                        {f.label}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
                     </div>
 
                     {/* Right column: phone mockup */}
                     <div className="flex items-center justify-center flex-1 min-w-0 min-h-0">
                         <div
                             className="relative"
-                            style={{ width: "min(220px, 35vw)", aspectRatio: "9/19" }}
+                            style={{ width: "clamp(130px, 35vw, 300px)", aspectRatio: "9/19" }}
                         >
                             {/* Phone frame */}
                             <div className="absolute inset-0 rounded-[2.5rem] border-[6px] border-gray-800 shadow-2xl z-10" />
@@ -130,7 +141,7 @@ const FeaturesSection = () => {
                                         style={{
                                             fontFamily: "'Lexend', sans-serif",
                                             fontWeight: 400,
-                                            fontSize: "clamp(10px, 1.5vw, 13px)",
+                                            fontSize: "clamp(10px, 1.5vw, 16px)",
                                             color: "#6130A6",
                                             textAlign: "center",
                                             padding: "0 12px",
