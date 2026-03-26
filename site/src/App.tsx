@@ -1,30 +1,25 @@
 import { Routes, Route } from 'react-router-dom'
 import { LenisProvider } from "./components/lenis"
 import ContactSection from "./ContactSection"
-import DetailsSection from "./DetailsSection"
+import FAQSection from "./FAQSection"
+import FeaturesSection from "./FeaturesSection"
 import Footer from "./Footer"
 import Header from "./Header"
 import Hero from "./Hero"
-import HumanoidSection from "./HumanoidSection"
 import LoadingScreen from "./LoadingScreen"
-import Newsletter from "./Newsletter"
-import SpecsSection from "./SpecsSection"
-import TestimonialSection from "./TestimonialSection"
+import MissionSection from "./MissionSection"
 import PrivacyPolicy from './PrivacyPolicy'
 import TermsOfService from './TermsOfService'
 import CookiePolicy from './CookiePolicy'
 import EmailVerification from './EmailVerification'
 
-// Create a HomePage component with all sections except Contact
 function HomePage() {
   return (
     <>
       <Hero />
-      <HumanoidSection />
-      <SpecsSection />
-      <DetailsSection />
-      <TestimonialSection />
-      <Newsletter />
+      <FeaturesSection />
+      <MissionSection />
+      <FAQSection />
     </>
   )
 }

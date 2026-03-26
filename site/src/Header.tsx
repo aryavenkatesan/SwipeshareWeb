@@ -82,30 +82,37 @@ function Header() {
                     >
                         <img src={logo} alt="Swipeshare logo" className="h-6 lg:h-8 w-auto pr-2 lg:pr-4" />
                         <h1 className="text-xl lg:text-2xl" style={{
-                            fontFamily: 'Montserrat', fontWeight: 300
+                            fontFamily: "'League Spartan', sans-serif", fontWeight: 400, color: "#6130A6"
                         }}>Swipeshare</h1>
                     </div>
 
                     {/* Desktop Navigation */}
-                    <nav className="hidden lg:flex gap-4" style={{ fontFamily: 'Montserrat', fontWeight: 400 }}>
+                    <nav className="hidden lg:flex gap-4" style={{ fontFamily: "'Lexend', sans-serif", fontWeight: 300, fontSize: "15px" }}>
                         <a
                             href="/#home"
                             onClick={(e) => handleNavClick(e, '#home')}
-                            className="px-6 py-1.5 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 hover:bg-white/30 hover:text-[#A98CE4] transition-all duration-200"
+                            className="px-6 py-1.5 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 hover:bg-white/30 hover:text-[#9A6CD9] transition-all duration-200"
                         >
                             Home
                         </a>
                         <a
                             href="/#features"
                             onClick={(e) => handleNavClick(e, '#features')}
-                            className="px-6 py-1.5 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 hover:bg-white/30 hover:text-[#A98CE4] transition-all duration-200"
+                            className="px-6 py-1.5 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 hover:bg-white/30 hover:text-[#9A6CD9] transition-all duration-200"
                         >
-                            About
+                            Features
+                        </a>
+                        <a
+                            href="/#faq"
+                            onClick={(e) => handleNavClick(e, '#faq')}
+                            className="px-6 py-1.5 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 hover:bg-white/30 hover:text-[#9A6CD9] transition-all duration-200"
+                        >
+                            FAQ
                         </a>
                         <a
                             href="/contact"
                             onClick={handleContactClick}
-                            className="px-6 py-1.5 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 hover:bg-white/30 hover:text-[#A98CE4] transition-all duration-200"
+                            className="px-6 py-1.5 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 hover:bg-white/30 hover:text-[#9A6CD9] transition-all duration-200"
                         >
                             Contact
                         </a>
@@ -143,28 +150,35 @@ function Header() {
                 <div className={`absolute right-0 top-0 h-full w-3/4 max-w-sm shadow-xl transform transition-transform duration-300 overflow-hidden ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'
                     }`}>
                     {/* Gradient Background */}
-                    <div className="absolute inset-0 bg-gradient-to-tl from-[#A98CE4] via-white/90 to-white/90 backdrop-blur-msm"></div>
+                    <div className="absolute inset-0 bg-gradient-to-tl from-[#C0CCFF] via-white/90 to-white/90 backdrop-blur-sm"></div>
 
                     {/* Content */}
-                    <div className="relative flex flex-col pt-20 px-8" style={{ fontFamily: 'Montserrat', fontWeight: 400 }}>
+                    <div className="relative flex flex-col pt-20 px-8" style={{ fontFamily: "'League Spartan', sans-serif", fontWeight: 400 }}>
                         <a
                             href="#home"
                             onClick={(e) => handleNavClick(e, '#home')}
-                            className="py-4 text-2xl border-b border-gray-200/50 hover:text-[#A98CE4] transition-colors duration-200"
+                            className="py-4 text-2xl border-b border-gray-200/50 hover:text-[#9A6CD9] transition-colors duration-200"
                         >
                             Home
                         </a>
                         <a
                             href="#features"
                             onClick={(e) => handleNavClick(e, '#features')}
-                            className="py-4 text-2xl border-b border-gray-200/50 hover:text-[#A98CE4] transition-colors duration-200"
+                            className="py-4 text-2xl border-b border-gray-200/50 hover:text-[#9A6CD9] transition-colors duration-200"
                         >
-                            About
+                            Features
+                        </a>
+                        <a
+                            href="#faq"
+                            onClick={(e) => handleNavClick(e, '#faq')}
+                            className="py-4 text-2xl border-b border-gray-200/50 hover:text-[#9A6CD9] transition-colors duration-200"
+                        >
+                            FAQ
                         </a>
                         <a
                             href="#contact"
                             onClick={handleContactClick}
-                            className="py-4 text-2xl hover:text-[#A98CE4] transition-colors duration-200"
+                            className="py-4 text-2xl hover:text-[#9A6CD9] transition-colors duration-200"
                         >
                             Contact
                         </a>

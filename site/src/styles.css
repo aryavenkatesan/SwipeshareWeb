@@ -1,118 +1,41 @@
 @import "tailwindcss";
 
+/* ── League Spartan (Headings) ── */
 @font-face {
-    font-family: 'Instrument Sans';
-    src: url('/assets/fonts/InstrumentSans-Medium.ttf');
-    font-weight: 500;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Instrument Sans';
-    src: url('/assets/fonts/InstrumentSans-Regular.ttf');
+    font-family: 'League Spartan';
+    src: url('/assets/fonts/LeagueSpartan-Regular.ttf');
     font-weight: 400;
     font-style: normal;
 }
-
 @font-face {
-    font-family: 'Montserrat';
-    src: url('/assets/fonts/Montserrat-Thin.ttf');
-    font-weight: 100;
+    font-family: 'League Spartan';
+    src: url('/assets/fonts/LeagueSpartan-Bold.ttf');
+    font-weight: 700;
     font-style: normal;
 }
 
+/* ── Lexend (Body) ── */
 @font-face {
-    font-family: 'Montserrat';
-    src: url('/assets/fonts/Montserrat-ExtraLight.ttf');
-    font-weight: 200;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Montserrat';
-    src: url('/assets/fonts/Montserrat-Light.ttf');
+    font-family: 'Lexend';
+    src: url('/assets/fonts/Lexend-Light.ttf');
     font-weight: 300;
     font-style: normal;
 }
-
 @font-face {
-    font-family: 'Montserrat';
-    src: url('/assets/fonts/Montserrat-Regular.ttf');
+    font-family: 'Lexend';
+    src: url('/assets/fonts/Lexend-Regular.ttf');
     font-weight: 400;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Montserrat';
-    src: url('/assets/fonts/Montserrat-Medium.ttf');
-    font-weight: 500;
     font-style: normal;
 }
 
 body {
-    font-family: 'Instrument Sans', sans-serif;
-    font-weight: 400;
+    font-family: 'Lexend', sans-serif;
+    font-weight: 300;
+    color: #000000;
 }
 
-/* === Circle Animation === */
-@keyframes draw-circle {
-    to {
-        stroke-dashoffset: 0;
-    }
-}
-
-.animate-draw-circle {
-    fill: none;
-    stroke: white;
-    /* Starts as white */
-    stroke-linecap: round;
-    /* Rounded circle ends */
-    stroke-linejoin: round;
-    stroke-width: 2;
-
-    /* Stroke animation */
-    stroke-dasharray: 150;
-    stroke-dashoffset: 150;
-
-    /* Delay before draw begins */
-    animation: draw-circle 1.5s ease-out 0.8s forwards;
-
-    /* Transition from white to green smoothly */
-    animation-fill-mode: forwards;
-}
-
-/* Change circle color as it draws */
-.text-green-500 .animate-draw-circle {
-    animation: draw-circle 2s ease-out 1s forwards, change-color 0.2s linear 1s forwards;
-}
-
-@keyframes change-color {
-    from {
-        stroke: white;
-    }
-
-    to {
-        stroke: currentColor;
-    }
-}
-
-/* === Checkmark Animation === */
-@keyframes draw-check {
-    to {
-        stroke-dashoffset: 0;
-    }
-}
-
-.animate-draw-check {
-    fill: none;
-    stroke: currentColor;
-    /* Ensures visible green stroke */
-    stroke-dasharray: 30;
-    stroke-dashoffset: 30;
-
-    /* Starts after circle finishes */
-    animation: draw-check 1.5s ease-out 1.8s forwards;
-
-    stroke-linecap: round;
-    stroke-linejoin: round;
+/* ── Float animation (hero illustration) ── */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
 }

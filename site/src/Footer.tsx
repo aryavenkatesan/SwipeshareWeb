@@ -62,7 +62,7 @@ const Footer = () => {
 
     return (
         <footer className="bg-gray-900 text-gray-300" style={{
-            fontFamily: 'Montserrat', fontWeight: 300
+            fontFamily: "'Lexend', sans-serif", fontWeight: 300
         }}>
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Main Footer Content */}
@@ -78,10 +78,11 @@ const Footer = () => {
                                 >
                                     <img src={logo} alt="Swipeshare logo" className="h-6 lg:h-8 w-auto pr-1" />
                                     <h3 className="text-xl  text-white" style={{
-                                        fontFamily: 'Montserrat', fontWeight: 300
+                                        fontFamily: "'Lexend', sans-serif", fontWeight: 300
                                     }}>Swipeshare</h3>
                                 </div>
                                 <p className="text-sm text-gray-400">
+                                    <br />
                                     Sell. Buy. Swipe.
                                     <br />
                                     <br />
@@ -108,10 +109,10 @@ const Footer = () => {
                                     <span
                                         role="button"
                                         tabIndex={0}
-                                        onClick={() => handleNavClick("#testimonials")}
+                                        onClick={() => handleNavClick("#faq")}
                                         className="hover:text-white transition-colors cursor-pointer"
                                     >
-                                        Testimonials
+                                        FAQ
                                     </span>
                                 </li>
                                 <li>
