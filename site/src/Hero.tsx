@@ -14,7 +14,7 @@ function Hero() {
         <section
             className="relative bg-white"
             id="home"
-            style={{ height: "93svh", overflow: "clip" }}
+            style={{ height: "clamp(580px, 93svh, 760px)", overflow: "clip" }}
         >
             {/* ── Mobile layout ─────────────────────────────────────── */}
             <div className="lg:hidden relative h-full flex flex-col pt-24 pb-0">
@@ -23,7 +23,7 @@ function Hero() {
                     style={{
                         fontFamily: "'League Spartan', sans-serif",
                         fontWeight: 700,
-                        fontSize: "clamp(32px, 9vw, 48px)",
+                        fontSize: "clamp(28px, 10vw, 42px)",
                         lineHeight: 1.05,
                         color: "#6130A6",
                     }}
@@ -57,9 +57,9 @@ function Hero() {
                 <div
                     className={`absolute transition-all duration-1000 ease-out ${loaded ? "opacity-100" : "opacity-0"}`}
                     style={{
-                        bottom: "-92px",
-                        right: "-8%",
-                        width: "65vh",
+                        bottom: "clamp(-180px, -17.8svh, -92px)",
+                        right: "-8vh",
+                        width: "53vh",
                         transitionDelay: loaded ? "0.15s" : "0s",
                     }}
                 >
@@ -77,14 +77,15 @@ function Hero() {
                     className={`absolute bottom-6 left-6 right-6 text-center text-white rounded-xl py-3 z-10 transition-all duration-300 hover:opacity-90 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
                     style={{
                         fontFamily: "'Lexend', sans-serif",
-                        fontWeight: 400,
-                        fontSize: "17px",
-                        height: "44px",
+                        fontWeight: 300,
+                        fontSize: "clamp(15px, 5vw, 18px)",
+                        height: "clamp(44px, 6.5vh, 94px)",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
                         background: "#6130A6",
                         transitionDelay: loaded ? "0.3s" : "0s",
+                        letterSpacing: "0.02em",
                     }}
                 >
                     Download Now
