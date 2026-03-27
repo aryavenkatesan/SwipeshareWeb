@@ -8,7 +8,7 @@ const features = [
     { label: "Swipe each other in!", color: "#A7B8FE" },
 ]
 
-const VH_PER_ITEM = 0.5  // viewports of scrolling required per bullet step
+const VH_PER_ITEM = 1  // viewports of scrolling required per bullet step
 
 const FeaturesSection = () => {
     const sectionRef = useRef<HTMLDivElement>(null)
@@ -30,7 +30,10 @@ const FeaturesSection = () => {
                 window.requestAnimationFrame(() => {
                     if (!sectionRef.current) return
                     const rect = sectionRef.current.getBoundingClientRect()
-                    const totalScroll = window.innerHeight * features.length * VH_PER_ITEM
+                    // Derive totalScroll from the section's actual rendered height (svh-based, stable)
+                    // rather than window.innerHeight which fluctuates when the browser bar hides/shows.
+                    const svh = sectionRef.current.offsetHeight / (features.length * VH_PER_ITEM + 1)
+                    const totalScroll = svh * features.length * VH_PER_ITEM
                     let progress = 0
                     if (rect.top <= 0) {
                         progress = Math.min(1, Math.max(0, Math.abs(rect.top) / totalScroll))
@@ -54,12 +57,12 @@ const FeaturesSection = () => {
         <div
             ref={sectionRef}
             className="relative"
-            style={{ height: `${(features.length * VH_PER_ITEM + 1) * 100}vh` }}
+            style={{ height: `${(features.length * VH_PER_ITEM + 1) * 100}svh` }}
             id="features"
         >
             <section
                 className="sticky top-0 w-full overflow-hidden"
-                style={{ height: "100vh", background: "#AEDEF2" }}
+                style={{ height: "100svh", background: "#AEDEF2" }}
             >
                 <div className="h-full flex flex-col lg:flex-row px-6 lg:px-16 pt-20 pb-8 gap-8 max-w-6xl mx-auto">
                     {/* Left column: text + bullets */}

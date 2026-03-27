@@ -44,18 +44,33 @@ function Hero() {
         const DELAY = 400        // ms — waits for text to fade in
         const DURATION = 1800    // ms — sweep duration
 
+        const reveal = (path: SVGPathElement) => {
+            path.setAttribute("d", "M 0 0 H 99999 V 99999 H 0 Z")
+        }
+
         const delay = setTimeout(() => {
             const container = containerRef.current
             const path = pathRef.current
             if (!container || !path) return
 
-            const W = container.offsetWidth
-            const H = container.offsetHeight
-            const cx = W / 2 + 65   // shifted right
-            const cy = H / 2 - 30   // shifted up (half as much)
-            // Radius large enough to cover all corners
-            const r = Math.sqrt(W * W + H * H) / 2 + 4
+            let W = container.offsetWidth
+            let H = container.offsetHeight
 
+            // Fallback: offsetWidth/Height can be 0 on some mobile browsers before layout settles
+            if (!W || !H) {
+                W = (window.visualViewport?.height ?? window.innerHeight) * 0.53  // mirrors "width: 53vh"
+                H = container.getBoundingClientRect().height || W * 2.1
+            }
+
+            // If dimensions are still unusable, hard-reveal the image
+            if (!W || !H) {
+                reveal(path)
+                return
+            }
+
+            const cx = W / 2 + 65
+            const cy = H / 2 - 30
+            const r = Math.sqrt(W * W + H * H) / 2 + 4
             const start = performance.now()
 
             const tick = (now: number) => {
@@ -67,8 +82,16 @@ function Hero() {
             rafRef.current = requestAnimationFrame(tick)
         }, DELAY)
 
+        // Hard fallback: if the clip path never drew (e.g. SVG clip unsupported),
+        // force-reveal the image after the animation window has passed
+        const fallback = setTimeout(() => {
+            const path = pathRef.current
+            if (path && !path.getAttribute("d")) reveal(path)
+        }, DELAY + DURATION + 600)
+
         return () => {
             clearTimeout(delay)
+            clearTimeout(fallback)
             if (rafRef.current) cancelAnimationFrame(rafRef.current)
         }
     }, [loaded])

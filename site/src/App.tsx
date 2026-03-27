@@ -12,6 +12,7 @@ import PrivacyPolicy from './PrivacyPolicy'
 import TermsOfService from './TermsOfService'
 import CookiePolicy from './CookiePolicy'
 import EmailVerification from './EmailVerification'
+import WaitlistPopup from './WaitlistPopup'
 
 function HomePage() {
   return (
@@ -40,6 +41,7 @@ function App() {
         </Routes>
       </main>
       <Footer />
+      <WaitlistPopup />
     </LenisProvider>
   )
 }
