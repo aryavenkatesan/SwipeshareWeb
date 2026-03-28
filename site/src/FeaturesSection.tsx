@@ -62,7 +62,7 @@ const FeaturesSection = () => {
         >
             <section
                 className="sticky top-0 w-full overflow-hidden"
-                style={{ height: "100svh", background: "#AEDEF2" }}
+                style={{ height: "100vh", background: "#AEDEF2" }}
             >
                 <div className="h-full flex flex-col lg:flex-row px-6 lg:px-16 pt-20 pb-8 gap-8 max-w-6xl mx-auto">
                     {/* Left column: text + bullets */}
