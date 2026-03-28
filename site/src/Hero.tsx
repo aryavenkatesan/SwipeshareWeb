@@ -32,7 +32,7 @@ function Hero() {
                     style={{
                         fontFamily: "'League Spartan', sans-serif",
                         fontWeight: 700,
-                        fontSize: "clamp(28px, 10vw, 42px)",
+                        fontSize: "clamp(28px, 10svw, 42px)",
                         lineHeight: 1.05,
                         color: "#6130A6",
                     }}
@@ -66,7 +66,7 @@ function Hero() {
                 <div
                     className="absolute"
                     style={{
-                        bottom: "clamp(-180px, -17.8svh, -92px)",
+                        bottom: "clamp(-180px, -19.2svh, -92px)",
                         right: "-8vh",
                         width: "53vh",
                     }}
