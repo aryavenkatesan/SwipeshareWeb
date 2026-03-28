@@ -51,7 +51,7 @@ const WaitlistPopup = () => {
             <div className="fixed inset-0 z-[61] flex items-center justify-center px-5 pointer-events-none">
                 <div
                     className="relative w-full max-w-md rounded-xl shadow-2xl pointer-events-auto overflow-hidden"
-                    style={{ background: "#F0F0F0" }}
+                    style={{ background: "#E9E9E9" }}
                 >
                     {/* Close button */}
                     <button
@@ -120,7 +120,6 @@ const WaitlistPopup = () => {
                                             height: "48px",
                                             background: "#E8E4FF",
                                             color: "#6130A6",
-                                            outlineColor: "#6130A6",
                                         }}
                                     />
                                     <div className="gap-x-3"/>

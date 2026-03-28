@@ -28,13 +28,14 @@ function Hero() {
             <div className="lg:hidden relative h-full flex flex-col pt-24 pb-0">
                 {/* Heading */}
                 <h1
-                    className={`relative z-10 px-6 transition-all duration-1000 ease-out ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+                    className={`relative z-10 pl-6 transition-all duration-1000 ease-out ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
                     style={{
                         fontFamily: "'League Spartan', sans-serif",
                         fontWeight: 700,
-                        fontSize: "clamp(28px, 10svw, 42px)",
+                        fontSize: "clamp(28px, 8.5vw, 44px)",
                         lineHeight: 1.05,
                         color: "#6130A6",
+                        maxWidth: "54vw",
                     }}
                 >
                     Where extra<br />swipes find<br />hungry<br />
