@@ -80,7 +80,17 @@ function Header() {
                         className='flex flex-row items-center cursor-pointer'
                         onClick={() => navigate('/')}
                     >
-                        <img src={logo} alt="Swipeshare logo" className="h-6 lg:h-8 w-auto pr-2 lg:pr-4" />
+                        <img
+                            src={logo}
+                            alt="Swipeshare logo"
+                            className="h-6 lg:h-8 w-auto pr-2 lg:pr-4"
+                            fetchPriority="high"
+                            onError={(e) => {
+                                const img = e.currentTarget
+                                img.onerror = null
+                                setTimeout(() => { img.src = logo }, 800)
+                            }}
+                        />
                         <h1 className="text-xl lg:text-2xl" style={{
                             fontFamily: "'League Spartan', sans-serif", fontWeight: 400, color: "#6130A6"
                         }}>Swipeshare</h1>

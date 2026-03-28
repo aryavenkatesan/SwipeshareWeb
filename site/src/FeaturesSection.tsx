@@ -57,7 +57,7 @@ const FeaturesSection = () => {
         <div
             ref={sectionRef}
             className="relative"
-            style={{ height: `${(features.length * VH_PER_ITEM + 1) * 100}svh` }}
+            style={{ height: `${(features.length * VH_PER_ITEM + 1) * 100}vh` }}
             id="features"
         >
             <section
@@ -122,7 +122,7 @@ const FeaturesSection = () => {
                     <div className="flex items-center justify-center flex-1 min-w-0 min-h-0">
                         <div
                             className="relative"
-                            style={{ width: "clamp(130px, 35vw, 300px)", aspectRatio: "9/19" }}
+                            style={{ width: "clamp(110px, 30vw, 300px)", maxHeight: "38svh", aspectRatio: "9/19" }}
                         >
                             {/* Phone frame */}
                             <div className="absolute inset-0 rounded-[2.5rem] border-[6px] border-gray-800 shadow-2xl z-10" />

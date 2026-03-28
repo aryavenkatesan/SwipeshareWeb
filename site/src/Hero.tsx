@@ -164,9 +164,15 @@ function Hero() {
                         src={heroIllustrationFlipped}
                         alt="Students sharing meal swipes"
                         className="w-full block"
+                        fetchPriority="high"
                         style={{
                             clipPath: "url(#arc-reveal-clip)",
                             animation: "float 4s ease-in-out infinite",
+                        }}
+                        onError={(e) => {
+                            const img = e.currentTarget
+                            img.onerror = null
+                            setTimeout(() => { img.src = heroIllustrationFlipped }, 800)
                         }}
                     />
                 </div>
@@ -258,7 +264,13 @@ function Hero() {
                         src={heroIllustration}
                         alt="Students sharing meal swipes"
                         className="w-full max-w-lg xl:max-w-xl"
+                        fetchPriority="high"
                         style={{ animation: "float 4s ease-in-out infinite" }}
+                        onError={(e) => {
+                            const img = e.currentTarget
+                            img.onerror = null
+                            setTimeout(() => { img.src = heroIllustration }, 800)
+                        }}
                     />
                 </div>
             </div>
