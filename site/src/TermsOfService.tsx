@@ -100,6 +100,9 @@ const TermsOfService = () => {
                                 <li>Interfere with other users’ use or enjoyment of the Platform.</li>
                             </ul>
                             <p>
+                                Users are responsible for ensuring their own compliance with any applicable university policies or third-party rules. Swipeshare makes no representation as to whether use of the Platform is permitted under any such policies.
+                            </p>
+                            <p>
                                 Swipeshare reserves the right, at its sole discretion, to suspend, restrict, or terminate any user’s access to the Platform without notice, including (but not limited to) users who are repeatedly reported for misconduct or who violate these Terms.
                             </p>
                         </div>
@@ -152,6 +155,9 @@ const TermsOfService = () => {
                             </ul>
                             <p>
                                 The Platform is provided on an “as is” and “as available” basis without warranties of any kind, whether express or implied.
+                            </p>
+                            <p>
+                                Swipeshare is not responsible for any consequences that may arise from a user's failure to comply with third-party rules or policies. Users assume full responsibility for their own actions when using the Platform.
                             </p>
                         </div>
                     </div>

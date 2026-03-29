@@ -143,7 +143,7 @@ const FeaturesSection = () => {
                                     style={{
                                         opacity: activeIndex === i ? 1 : 0,
                                         transition: "opacity 0.5s ease-in-out",
-                                        padding: i < 3 ? "4px" : undefined,
+                                        padding: i !== 4 ? "4px" : undefined,
                                     }}
                                 />
                             ))}

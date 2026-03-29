@@ -3,7 +3,7 @@ import { useState } from "react"
 const faqData = [
     {
         question: "How does payment work?",
-        answer: "Payment details coming soon. We're working on a secure in-app payment system to make transactions seamless for both buyers and sellers.",
+        answer: "You meet up with your buyer in person at the dining hall, and they swipe you in with their one card. Payment is handled separately between you and the buyer. We recommend using Venmo or Cash App for easy transactions.",
     },
     {
         question: "Am I required to go in person?",
@@ -12,6 +12,14 @@ const faqData = [
     {
         question: "Can I share PLUS swipes using the app?",
         answer: "PLUS swipe compatibility details coming soon. Stay tuned for updates!",
+    },
+    {
+        question: "Is the app free?",
+        answer: "Yes the app is completly free and available for UNC Students!",
+    },
+    {
+        question: "Is the app available to UNC friends and family?",
+        answer: "No, the app requires you to sign up with a valid UNC email address and is only available to current UNC students.",
     },
 ]
 
