@@ -121,14 +121,14 @@ const FeaturesSection = () => {
                     {/* Right column: phone mockup */}
                     <div className="flex items-center justify-center flex-1 min-w-0 min-h-0">
                         <div
-                            className="relative"
-                            style={{ width: "clamp(110px, 30vw, 300px)", maxHeight: "38svh", aspectRatio: "9/19" }}
+                            className="relative h-[clamp(240px,38svh,350px)] lg:h-[400px]"
+                            style={{ aspectRatio: "9/19" }}
                         >
                             {/* Phone frame */}
                             <div className="absolute inset-0 rounded-[2rem] border-[6px] border-gray-800 shadow-2xl z-10" />
                            
                             {/* Notch */}
-                            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-5 bg-gray-800 rounded-b-xl z-20" />
+                            {/* <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-5 bg-gray-800 rounded-b-xl z-20 lg:hidden" /> */}
 
                             {/* White base screen */}
                             <div className="absolute inset-0 rounded-[2rem] bg-white" />
