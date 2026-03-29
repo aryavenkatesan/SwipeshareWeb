@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from "react"
 
 const features = [
-    { label: "View marketplace", color: "#D6E4F7" },
-    { label: "Add to marketplace", color: "#C8D8F5" },
-    { label: "Message", color: "#BECCF3" },
-    { label: "Meet up at dining hall", color: "#B4C0F0" },
-    { label: "Swipe each other in!", color: "#A7B8FE" },
+    { label: "View marketplace",      screen: "/assets/MarketScreen.png" },
+    { label: "Add to marketplace",    screen: "/assets/SellScreen.png" },
+    { label: "Message",               screen: "/assets/MessageScreen.png" },
+    { label: "Meet up at dining hall", screen: "/assets/MeetupScreen.png" },
+    { label: "Swipe each other in!",  screen: "/assets/SwipeEachOtherScreen.png" },
 ]
 
 const VH_PER_ITEM = 1  // viewports of scrolling required per bullet step
@@ -125,34 +125,27 @@ const FeaturesSection = () => {
                             style={{ width: "clamp(110px, 30vw, 300px)", maxHeight: "38svh", aspectRatio: "9/19" }}
                         >
                             {/* Phone frame */}
-                            <div className="absolute inset-0 rounded-[2.5rem] border-[6px] border-gray-800 shadow-2xl z-10" />
+                            <div className="absolute inset-0 rounded-[2rem] border-[6px] border-gray-800 shadow-2xl z-10" />
+                           
                             {/* Notch */}
                             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-5 bg-gray-800 rounded-b-xl z-20" />
 
+                            {/* White base screen */}
+                            <div className="absolute inset-0 rounded-[2rem] bg-white" />
+
                             {/* Screens */}
                             {features.map((f, i) => (
-                                <div
+                                <img
                                     key={i}
-                                    className="absolute inset-0 rounded-[2rem] flex flex-col items-center justify-center"
+                                    src={f.screen}
+                                    alt={f.label}
+                                    className="absolute inset-0 w-full h-full rounded-[2rem] object-contain"
                                     style={{
-                                        background: f.color,
                                         opacity: activeIndex === i ? 1 : 0,
                                         transition: "opacity 0.5s ease-in-out",
+                                        padding: i < 3 ? "4px" : undefined,
                                     }}
-                                >
-                                    <span
-                                        style={{
-                                            fontFamily: "'Lexend', sans-serif",
-                                            fontWeight: 400,
-                                            fontSize: "clamp(10px, 1.5vw, 16px)",
-                                            color: "#6130A6",
-                                            textAlign: "center",
-                                            padding: "0 12px",
-                                        }}
-                                    >
-                                        {f.label}
-                                    </span>
-                                </div>
+                                />
                             ))}
                         </div>
                     </div>
