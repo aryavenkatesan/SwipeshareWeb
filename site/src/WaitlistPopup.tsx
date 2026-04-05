@@ -1,39 +1,19 @@
 import { useState, useEffect } from "react"
 
-const GOOGLE_SCRIPT_URL = import.meta.env.VITE_GOOGLE_SCRIPT_URL as string
+const APP_STORE_URL = "https://apps.apple.com/us/app/swipeshare-meal-sharing-app/id6754625796"
 
 const WaitlistPopup = () => {
     const [visible, setVisible] = useState(false)
-    const [email, setEmail] = useState("")
-    const [submitting, setSubmitting] = useState(false)
-    const [submitted, setSubmitted] = useState(false)
 
     useEffect(() => {
-        if (localStorage.getItem("waitlist_joined")) return
-        const timer = setTimeout(() => setVisible(true), 5000)
+        if (localStorage.getItem("app_cta_dismissed")) return
+        const timer = setTimeout(() => setVisible(true), 20000)
         return () => clearTimeout(timer)
     }, [])
 
     const dismiss = () => {
+        localStorage.setItem("app_cta_dismissed", "1")
         setVisible(false)
-    }
-
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault()
-        if (!email.trim()) return
-        setSubmitting(true)
-        try {
-            await fetch(GOOGLE_SCRIPT_URL, {
-                method: "POST",
-                mode: "no-cors",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ email: email.trim(), timestamp: new Date().toISOString() }),
-            })
-            setSubmitted(true)
-            localStorage.setItem("waitlist_joined", "1")
-        } finally {
-            setSubmitting(false)
-        }
     }
 
     if (!visible) return null
@@ -63,84 +43,42 @@ const WaitlistPopup = () => {
                         ✕
                     </button>
 
-                    <div className="px-8 py-10">
-                        {submitted ? (
-                            <div className="text-center py-4">
-                                <h2
-                                    style={{
-                                        fontFamily: "'League Spartan', sans-serif",
-                                        fontWeight: 700,
-                                        fontSize: "26px",
-                                        color: "#6130A6",
-                                        lineHeight: 1.1,
-                                    }}
-                                >
-                                    You're on the list!
-                                </h2>
-                                <p
-                                    className="mt-2"
-                                    style={{ fontFamily: "'Lexend', sans-serif", fontWeight: 300, fontSize: "15px", color: "#6130A6" }}
-                                >
-                                    We'll reach out when we launch.
-                                </p>
-                            </div>
-                        ) : (
-                            <>
-                                <h2
-                                    style={{
-                                        fontFamily: "'League Spartan', sans-serif",
-                                        fontWeight: 700,
-                                        fontSize: "clamp(24px, 5vw, 30px)",
-                                        color: "#6130A6",
-                                        lineHeight: 1.15,
-                                    }}
-                                >
-                                    Sign up for the waitlist!
-                                </h2>
+                    <div className="px-8 py-10 text-center">
+                        <h2
+                            style={{
+                                fontFamily: "'League Spartan', sans-serif",
+                                fontWeight: 700,
+                                fontSize: "clamp(24px, 5vw, 30px)",
+                                color: "#6130A6",
+                                lineHeight: 1.15,
+                            }}
+                        >
+                            Download the app!
+                        </h2>
 
-                                <p
-                                    className="mt-6 mb-6"
-                                    style={{ fontFamily: "'Lexend', sans-serif", fontWeight: 300, fontSize: "15px", color: "#6130A6" }}
-                                >
-                                    Be the first to know when Swipeshare launches at UNC!
-                                </p>
+                        <p
+                            className="mt-4 mb-8"
+                            style={{ fontFamily: "'Lexend', sans-serif", fontWeight: 300, fontSize: "15px", color: "#6130A6" }}
+                        >
+                            Swipeshare is live on the App Store — start sharing meal swipes with fellow UNC students today.
+                        </p>
 
-                                <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-                                    <input
-                                        type="email"
-                                        required
-                                        placeholder="your@email.com"
-                                        value={email}
-                                        onChange={e => setEmail(e.target.value)}
-                                        className="w-full rounded-xl px-4 outline-none border-2 border-transparent focus:border-[#6130A6] transition-colors"
-                                        style={{
-                                            fontFamily: "'Lexend', sans-serif",
-                                            fontWeight: 300,
-                                            fontSize: "15px",
-                                            height: "48px",
-                                            background: "#E8E4FF",
-                                            color: "#6130A6",
-                                        }}
-                                    />
-                                    <div className="gap-x-3"/>
-                                    <button
-                                        type="submit"
-                                        disabled={submitting}
-                                        className="w-full rounded-xl text-white hover:opacity-90 transition-opacity disabled:opacity-60"
-                                        style={{
-                                            fontFamily: "'Lexend', sans-serif",
-                                            fontWeight: 400,
-                                            fontSize: "16px",
-                                            height: "48px",
-                                            background: "#6130A6",
-                                        }}
-                                    >
-                                        {submitting ? "Joining…" : "Join the waitlist"}
-                                    </button>
-                                </form>
-
-                            </>
-                        )}
+                        <a
+                            href={APP_STORE_URL}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={dismiss}
+                            className="w-full rounded-xl text-white hover:opacity-90 transition-opacity inline-flex items-center justify-center"
+                            style={{
+                                fontFamily: "'Lexend', sans-serif",
+                                fontWeight: 400,
+                                fontSize: "16px",
+                                height: "48px",
+                                background: "#6130A6",
+                            }}
+                        >
+                            Download on the App Store
+                        </a>
                     </div>
                 </div>
             </div>

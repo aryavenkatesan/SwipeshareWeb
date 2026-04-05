@@ -94,7 +94,9 @@ function Hero() {
 
                 {/* Download Now – pinned to bottom */}
                 <a
-                    href="#"
+                    href="https://apps.apple.com/us/app/swipeshare-meal-sharing-app/id6754625796"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className={`absolute bottom-6 left-6 right-6 text-center text-white rounded-xl z-10 transition-all duration-300 hover:opacity-90 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
                     style={{
                         fontFamily: "'Lexend', sans-serif",
@@ -154,7 +156,9 @@ function Hero() {
                     </h1>
 
                     <a
-                        href="#"
+                        href="https://apps.apple.com/us/app/swipeshare-meal-sharing-app/id6754625796"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className={`self-start text-white rounded-full px-10 hover:opacity-90 transition-all duration-300 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
                         style={{
                             fontFamily: "'Lexend', sans-serif",

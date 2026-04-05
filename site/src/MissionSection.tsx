@@ -169,7 +169,9 @@ const MissionSection = () => {
                     {/* Button */}
 
                     <a
-                        href="#"
+                        href="https://apps.apple.com/us/app/swipeshare-meal-sharing-app/id6754625796"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="inline-flex items-center justify-center text-white rounded-full px-10 hover:opacity-90 transition-opacity duration-200"
                         style={{
                             fontFamily: "'Lexend', sans-serif",
