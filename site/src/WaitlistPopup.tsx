@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 
-const APP_STORE_URL = "https://apps.apple.com/us/app/swipeshare-meal-sharing-app/id6754625796"
+const APP_STORE_URL = "https://apps.apple.com/us/app/swipeshare-meal-sharing-app/id675425796"
 
 const WaitlistPopup = () => {
     const [visible, setVisible] = useState(false)
